@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Thank You – Glitz Detailing</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --card: #161616;
+    --blue: #2C7BE5;
+    --blue-bright: #3d8ff5;
+    --white: #f5f5f5;
+    --grey: #888;
+    --light-grey: #ccc;
+    --border: rgba(255,255,255,0.07);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px;
+    background: rgba(10,10,10,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav img.logo { height: 38px; object-fit: contain; }
+  .nav-cta {
+    background: var(--blue); color: #fff; font-family: var(--font-body);
+    font-weight: 500; font-size: 0.85rem; letter-spacing: 0.04em;
+    text-decoration: none; padding: 10px 20px; border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--blue-bright); }
+
+  /* MAIN CONTENT */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle background glow */
+  main::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(44,123,229,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .thankyou-card {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    width: 100%;
+    text-align: center;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .check-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(44,123,229,0.12);
+    border: 1px solid rgba(44,123,229,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+    animation: popIn 0.5s 0.2s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.6); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+    animation: fadeUp 0.6s 0.15s ease both;
+  }
+
+  .thankyou-card h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.25s ease both;
+  }
+
+  .thankyou-card h1 span { color: var(--blue); }
+
+  .thankyou-card p {
+    font-size: 1.05rem;
+    color: var(--light-grey);
+    max-width: 460px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+
+  .actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.45s ease both;
+  }
+
+  .btn-primary {
+    background: var(--blue); color: #fff; text-decoration: none;
+    font-family: var(--font-body); font-weight: 500; font-size: 0.95rem;
+    padding: 16px 32px; border-radius: 4px; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--blue-bright); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent; color: var(--white); text-decoration: none;
+    font-family: var(--font-body); font-weight: 500; font-size: 0.95rem;
+    padding: 16px 32px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); transform: translateY(-1px); }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+    margin: 48px auto;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+
+  /* WHAT'S NEXT STRIP */
+  .next-steps {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 620px;
+    margin: 0 auto;
+    animation: fadeUp 0.6s 0.55s ease both;
+  }
+
+  .next-step {
+    flex: 1;
+    padding: 24px 20px;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .next-step:last-child { border-right: none; }
+
+  .next-step-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .next-step-label {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--grey);
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+    color: var(--grey);
+    font-size: 0.82rem;
+  }
+  footer span { color: var(--blue); }
+
+  /* FLOATING WHATSAPP */
+  .wa-float {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 24px rgba(37,211,102,0.4); text-decoration: none;
+    animation: waPulse 2.5s ease-in-out infinite; transition: transform 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.1); animation: none; }
+  @keyframes waPulse {
+    0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 36px rgba(37,211,102,0.7); }
+  }
+
+  @media(max-width: 480px) {
+    .next-steps { flex-direction: column; }
+    .next-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .next-step:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">
+    <img src="logo.jpg" alt="Glitz Detailing" class="logo">
+  </a>
+  <a href="index.html#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <div class="thankyou-card">
+
+    <div class="check-circle">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2C7BE5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <div class="section-label">Enquiry Received</div>
+
+    <h1>We'll Be In<br><span>Touch.</span></h1>
+
+    <p>Thanks for reaching out to Glitz Detailing. We've received your enquiry and will get back to you within 24 hours to discuss your appointment.</p>
+
+    <div class="actions">
+      <a href="index.html" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to Home
+      </a>
+      <a href="https://wa.me/447984911634?text=Hi%2C%20I%27m%20interested%20in%20ceramic%20coating%20for%20my%20car" target="_blank" rel="noopener" class="btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.091.541 4.055 1.482 5.763L0 24l6.412-1.462A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.818 0-3.514-.491-4.975-1.345l-.356-.212-3.695.968.984-3.597-.231-.37A9.788 9.788 0 0 1 2.182 12C2.182 6.579 6.579 2.182 12 2.182S21.818 6.579 21.818 12 17.421 21.818 12 21.818z"/></svg>
+        WhatsApp Us
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="next-steps">
+      <div class="next-step">
+        <div class="next-step-num">01</div>
+        <div class="next-step-label">We review your enquiry within 24 hours</div>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">02</div>
+        <div class="next-step-label">We confirm your appointment date</div>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">03</div>
+        <div class="next-step-label">Bring your car in and we do the rest</div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Glitz Detailing</p>
+  <div style="margin-top: 10px;">
+    <a href="cookie-policy.html" style="margin: 0 10px; color: #ccc; text-decoration: none;">Cookies</a>
+    <a href="privacy-policy.html" style="margin: 0 10px; color: #ccc; text-decoration: none;">Privacy</a>
+    <a href="terms-and-conditions.html" style="margin: 0 10px; color: #ccc; text-decoration: none;">Terms</a>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/447984911634?text=Hi%2C%20I%27m%20interested%20in%20ceramic%20coating%20for%20my%20car" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp us">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.091.541 4.055 1.482 5.763L0 24l6.412-1.462A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.818 0-3.514-.491-4.975-1.345l-.356-.212-3.695.968.984-3.597-.231-.37A9.788 9.788 0 0 1 2.182 12C2.182 6.579 6.579 2.182 12 2.182S21.818 6.579 21.818 12 17.421 21.818 12 21.818z"/></svg>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Banner – Code Snippet</title>
+<style>
+  body { background: #0a0a0a; color: #f5f5f5; font-family: 'DM Sans', sans-serif; padding: 40px; }
+  pre { background: #161616; border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px; overflow-x: auto; font-size: 0.82rem; line-height: 1.6; color: #ccc; }
+</style>
+</head>
+<body>
+<p>This file is just for reference — see the actual banner code below.</p>
+<pre>
+COOKIE BANNER – paste this HTML just before &lt;/body&gt; in your index.html
+=======================================================================
+
+&lt;!-- COOKIE CONSENT BANNER --&gt;
+&lt;div id="cookieBanner" style="display:none;"&gt;&lt;/div&gt;
+
+&lt;style&gt;
+  #cookieBanner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 999;
+    background: #111111;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cookie-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: #ccc;
+    max-width: 700px;
+    line-height: 1.5;
+  }
+  .cookie-text a { color: #2C7BE5; text-decoration: none; }
+  .cookie-text a:hover { text-decoration: underline; }
+  .cookie-buttons { display: flex; gap: 10px; flex-shrink: 0; }
+  .cookie-accept {
+    background: #2C7BE5; color: #fff; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.85rem;
+    padding: 10px 20px; border-radius: 4px; transition: background 0.2s;
+  }
+  .cookie-accept:hover { background: #3d8ff5; }
+  .cookie-decline {
+    background: transparent; color: #888; border: 1px solid rgba(255,255,255,0.15);
+    cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 400;
+    font-size: 0.85rem; padding: 10px 20px; border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .cookie-decline:hover { border-color: rgba(255,255,255,0.35); color: #ccc; }
+  @media(max-width: 600px) {
+    #cookieBanner { flex-direction: column; align-items: flex-start; }
+    .cookie-buttons { width: 100%; }
+    .cookie-accept, .cookie-decline { flex: 1; text-align: center; }
+  }
+&lt;/style&gt;
+
+&lt;div id="cookieBanner"&gt;
+  &lt;p class="cookie-text"&gt;
+    We use cookies to improve your experience and to run Google Analytics and Ads tracking.
+    By clicking Accept, you consent to our use of these cookies.
+    &lt;a href="cookie-policy.html"&gt;Learn more&lt;/a&gt;
+  &lt;/p&gt;
+  &lt;div class="cookie-buttons"&gt;
+    &lt;button class="cookie-decline" onclick="setCookieConsent('declined')"&gt;Decline&lt;/button&gt;
+    &lt;button class="cookie-accept" onclick="setCookieConsent('accepted')"&gt;Accept&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  function setCookieConsent(choice) {
+    localStorage.setItem('cookieConsent', choice);
+    document.getElementById('cookieBanner').style.display = 'none';
+    if (choice === 'accepted') {
+      loadGoogleTracking();
+    }
+  }
+
+  function loadGoogleTracking() {
+    // Replace GA_MEASUREMENT_ID with your actual Google Analytics ID e.g. G-XXXXXXXXXX
+    var gaScript = document.createElement('script');
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+    gaScript.async = true;
+    document.head.appendChild(gaScript);
+    gaScript.onload = function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    };
+  }
+
+  // On page load — check existing consent
+  (function() {
+    var consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      document.getElementById('cookieBanner').style.display = 'flex';
+    } else if (consent === 'accepted') {
+      loadGoogleTracking();
+    }
+  })();
+&lt;/script&gt;
+</pre>
+</body>
+</html>
